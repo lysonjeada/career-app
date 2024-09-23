@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import PDFKit
 
 struct InterviewGenerateQuestionsView: View {
     @State private var selectedJobTitle: String = "Select Job Title"
@@ -14,7 +15,7 @@ struct InterviewGenerateQuestionsView: View {
     @State private var jobDescription: String = ""
     @State private var importing = false
     @State private var resumeFileURL: URL?
-
+    
     let jobTitles = [
         "Full Stack Developer",
         "Backend Developer",
@@ -34,7 +35,7 @@ struct InterviewGenerateQuestionsView: View {
         "Lead",
         "Manager"
     ]
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("1")
@@ -66,6 +67,7 @@ struct InterviewGenerateQuestionsView: View {
                 case .success(let selectedFile):
                     resumeFileURL = selectedFile.first
                     if let fileURL = resumeFileURL {
+                        convertToText(url: fileURL)
                         print("Selected file: \(fileURL.absoluteString)")
                     }
                 case .failure(let error):
@@ -128,5 +130,21 @@ struct InterviewGenerateQuestionsView: View {
             Spacer()
         }
         .padding()
+    }
+    
+    func convertToText(url: URL) {
+        if let pdfDocument = PDFDocument(url: url) {
+            let pageCount = pdfDocument.pageCount
+            var fullText = ""
+            
+            for pageIndex in 0..<pageCount {
+                if let page = pdfDocument.page(at: pageIndex) {
+                    if let pageText = page.string {
+                        fullText += pageText
+                    }
+                }
+            }
+            print(fullText)
+        }
     }
 }
