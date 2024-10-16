@@ -13,6 +13,8 @@ struct ContentView: View {
             BlogView()
                 .tabItem {
                     Label("Blog", systemImage: "doc.text")
+                        .accessibilityLabel("Blog Section")
+                        .accessibilityHint("Shows the blog articles")
                 }
             
             InterviewGenerateQuestionsView()
