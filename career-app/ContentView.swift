@@ -13,6 +13,9 @@ struct ContentView: View {
             BlogView()
                 .tabItem {
                     Label("Blog", systemImage: "doc.text")
+                        .accessibilityLabel("Blog Section")
+                        .accessibilityHint("Shows the blog articles")
+<<<<<<< Updated upstream
                 }
             
             InterviewGenerateQuestionsView()
@@ -28,6 +31,29 @@ struct ContentView: View {
             MenuView()
                 .tabItem {
                     Label("Menu", systemImage: "line.horizontal.3")
+=======
+                    
+                    InterviewGenerateQuestionsView()
+                        .tabItem {
+                            Label("Interviews", systemImage: "mic.fill")
+                                .accessibilityLabel("Interviews Section")
+                                .accessibilityHint("Generates interview questions")
+                        }
+                    
+                    ResumeView()
+                        .tabItem {
+                            Label("Resume", systemImage: "book.fill")
+                                .accessibilityLabel("Resume Section")
+                                .accessibilityHint("Displays your resume details")
+                        }
+                    
+                    MenuView()
+                        .tabItem {
+                            Label("Menu", systemImage: "line.horizontal.3")
+                                .accessibilityLabel("Menu Section")
+                                .accessibilityHint("Opens additional menu options")
+                        }
+>>>>>>> Stashed changes
                 }
         }
     }
