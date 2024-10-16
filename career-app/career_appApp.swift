@@ -6,27 +6,15 @@
 //
 
 import SwiftUI
-import FirebaseAnalytics
+//import FirebaseAnalytics
+//import FirebaseCore
 
 @main
 struct career_appApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
-    init() {
-        logSeeInicialScreenEvent()
-    }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-    }
-    
-    func logSeeInicialScreenEvent() {
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-          AnalyticsParameterItemID: "id",
-          AnalyticsParameterItemName: "viu-tela-inicial",
-          AnalyticsParameterContentType: "cont",
-        ])
     }
 }
